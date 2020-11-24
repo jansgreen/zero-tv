@@ -1,0 +1,36 @@
+{% extends "base_generic.html" %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="bg-light checkout_container">
+    <div class="container">
+        <div class="py-5 text-center">
+            <p class="lead">Your personal data is protected, we will never disclose your personal information.</p>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 order-md-2 mb-4">
+                <h4 class="d-flex justify-content-between align-items-center mb-3">
+
+                </h4>
+
+            </div>
+            <div class="col-md-8 order-md-1">
+                <h4 class="mb-3">Billing address</h4>
+                <form method="POST" action="{% url 'delete_Movie' Movies.id%}">
+                {% csrf_token %}
+                {{ form | crispy }}
+
+                <div class="text-right" >
+                    <a href="{% url 'index' %}" class="btn btn-outline-black btn-outline-black rounded-0">Cancel</a>
+                        <button class="btn btn-black rounded-0" >Update</button>
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

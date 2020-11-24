@@ -1,0 +1,84 @@
+{% load static %}
+{% load i18n %}
+
+<nav class="navbar navbar-dark bg-primary">
+  <div class="container-fluid">
+    <div class="col-md-5">
+      <a class="navbar-brand" href="{% url 'index' %}">
+        <img class="media_logo" src="{% static 'images/Logo_Zerotv.png' %}" width="150" height="60" alt="Home" loading="lazy">
+      </a></div>
+    <div class="col-md-5">
+      <ul class="sidebar-nav">
+        <li class="nav_bar">
+          <a
+            href="{% if user.is_authenticated %}{% url 'save_movies' %} {% else %}{% url 'account_login' %} {% endif %}">
+            {% if Movies_count %}
+            <span
+              class="{% if grand_total %} small badge-pill badge-success{% else %} badge badge-pill badge-secondary{% endif %}"><i
+                class="fa fa-television" aria-hidden="true"> {{ Movies_count }}
+              </i> <!-- RECUERDA DARLE UN RETOQUE A ESTO YA NO ES MAS TOTAL SINO CANTIDAD-->
+            </span>
+            {% endif %}
+          </a></li>
+
+        {% if not user.is_authenticated %}
+        <li class="nav_bar"><a href="{% url 'account_login'%}?next={{request.path}}">Login</a></li>
+        <li class="nav_bar"><a href="{% url 'account_signup' %}?next={{request.path}}">Register</a></li>
+        {% endif %}
+        {% csrf_token %}
+        <li class="nav_bar">
+          <form action="{% url 'index' %}" method="GET" class="form-inline">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="Search">
+            <button class="btn btn-success my-2 my-sm-0 search_buttom" type="submit">Search</button>
+          </form>
+        </li>
+        {% if user.is_authenticated %}
+        <li class="nav_bar nav_option"><a href="#">{{ user.get_username }}</a>
+          <button class="navbar-toggler nav_option" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent"
+            aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<nav class="navbar-expand-lg navbar-info bg-info">
+  <div class="collapse" id="navbarToggleExternalContent">
+    <div class="row no-gutters">
+      <div class="col-sm-9 col-md-9">
+        <ul class="navbar-nav mr-auto nav-ul">
+          <li class="nav-item">
+            <a class="nav-link text-white" href="{% url 'profiles' %}">My Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="{% url 'add_Movies' %}">Add a Movie</a>
+          </li>
+          {% if request.user.is_superuser %}
+          <li class="nav-item">
+            <a class="nav-link text-white" href="{% url 'Upload_gendres' %}">Updata Gendres</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="{% url 'Upload_Movies' %}">Updata Movies</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="{% url 'Manual' %}">Updata Manual</a>
+          </li>
+          {% endif %}
+          <li class="nav-item">
+            <a class="nav-link text-white" href="{% url 'order_history' %}">Purchase History</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-3 col-md-3">
+        <div class="nav-item">
+          <a class="nav-link text-white" href="{% url 'account_logout' %}?next={{request.path}}">Logout</a>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</nav>

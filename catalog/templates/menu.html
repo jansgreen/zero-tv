@@ -1,0 +1,40 @@
+{% load static %}
+{% load i18n %}
+{% block nav_content %}
+<div class="vertical_menu">
+  <ul class="nav flex-column">
+    {% if user.autenticated %}
+    <li class="nav-item">
+      <a class="nav-link active" href="{% url 'account_email'%}?next={{request.path}}">Email</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'account_change_password'%}?next={{request.path}}">Change Password</a>
+    </li>
+    {% endif  %}
+    {% if  request.user.is_superuser %}
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'account_email_verification_sent'%}?next={{request.path}}">Email Confirm</a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'account_set_password'%}?next={{request.path}}">Set Password</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'account_reset_password_done'%}?next={{request.path}}">Account Inactive</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'account_email_verification_sent'%}?next={{request.path}}">Email Verification Sent</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'account_reset_password_from_key_done'%}?next={{request.path}}">Reset Password Key</a> 
+    </li>
+    <li class="nav-item">
+      <a class="nav-link " href="{% url 'account_logout' %}?next={{request.path}}">Logout</a>
+    </li>
+    {% endif %}
+  </ul>
+</div>
+
+
+
+{% endblock %}

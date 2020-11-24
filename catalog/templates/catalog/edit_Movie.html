@@ -1,0 +1,46 @@
+{% extends "base_generic.html" %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="bg-light checkout_container">
+    <div class="container">
+        <div class="py-5 text-center">
+            <p class="lead">Only the fields bellow you can changes, for any alse please contact the Admin.</p>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 order-md-2 mb-4">
+                <h4 class="d-flex justify-content-between align-items-center mb-3">
+
+                </h4>
+
+            </div>
+            <div class="col-md-8 order-md-1">
+                <h4 class="mb-3">Edit a movie exits</h4>
+                <form method="POST" action="{% url 'edit_Movie' Movies.id%}">
+                {% csrf_token %}
+                {{ form.original_title |as_crispy_field  }}
+                {{ form.title |as_crispy_field  }}
+                {{ form.genreids |as_crispy_field  }}
+                {{ form.adult |as_crispy_field  }}
+                {{ form.poster |as_crispy_field  }}
+                {{ form.backdrop |as_crispy_field  }}
+                {{ form.Language |as_crispy_field  }}
+                {{ form.overview |as_crispy_field  }}
+                {{ form.release_date |as_crispy_field  }}
+                {{ form.price |as_crispy_field  }}
+
+
+                <div class="text-right" >
+                    <a href="{% url 'index' %}" class="btn btn-outline-black btn-outline-black rounded-0">Cancel</a>
+                        <button class="btn btn-black rounded-0" >Update</button>
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

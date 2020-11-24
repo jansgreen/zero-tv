@@ -1,0 +1,97 @@
+{% extends "base_generic.html" %}
+{% load humanize %}
+{% load bag_tools %}
+{% load static %}
+
+{% block content %}
+
+<div class="p-3 mb-2 bg-light text-dark block_container">
+  <h2 class="logo-font mb-4">Your Bag List</h2>
+  <hr>
+  <div class="row">
+    <div class="col-sm-8 p-3 mb-2 bg-light text-dark">
+      <div class="cart_list">
+        <ul class="list-group list-group-flush">
+          {% if movies_bag %}
+          {% for movie in movies_bag %}
+          <li class="list-group-item">
+            <div class="col-md-auto">
+              <div class="card mb-3" style="max-width: 35rem">
+                <div class="row no-gutters">
+                  <div class="col-md-4">
+                    <img src="{{movie.Movies_cont.poster}}" class="card-img-top" alt="{{movie.title}}">
+                  </div>
+                  <div class="col-md-8">
+  
+                    <div class="card-body">
+                      <h6 class="card-title">{{movie.Movies_cont.title}}</h6>
+                      <p class="card-text"><small class="text-muted">Clasification:
+                          {% if movie.Movies_cont.adult == False %}All
+                          Family {% else %} Adult {{movie.adult}}{% endif %}</small></p>
+                      <p>Price: {{movie.Movies_cont.price}}</p>
+  
+                      <form action="{% url 'updata' movie.Movies_cont.id %}" method="POST">
+                        {% csrf_token %}
+                        <p>Quantity:</p>
+  
+                        <div class="input-group">
+                          <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
+                            name="quantity" value="{{movie.quantity}}" min="0" max="99" data-movie.id="{{movie.quantity}}"
+                            id="id_qty_{{movie.quantity}}">
+  
+                          <div class="input-group-append">
+                            <input type="submit" class="btn btn-info" value="Updata"></input>
+                            <input type="hidden" name="redirect_url" value="{{ request.path}}">
+                          </div>
+                        </div>
+  
+                      </form>
+  
+                      <div class="alert alert-info">Subtotal:
+                        ${{movie.Movies_cont.price | calc_subtotal:movie.quantity | intcomma }}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+          {% endfor %}
+  
+          {% endif %}
+  
+        </ul>
+      </div>
+    </div>
+
+      <div class="col-sm -3 mb-2 bg-dark text-white">
+        <ul class="nav flex-column">
+          <div>
+            <table class="table table-hover table-dark">
+              <thead>
+                <tr>
+                  <th scope="col">Title</th>
+                  <th scope="col">Quantity</th>
+                  <th scope="col">Price</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for movie in movies_bag %}
+  
+                <tr>
+                  <td>{{movie.Movies_cont.title}}</td>
+                  <td>{{movie.quantity}}</td>
+                  <td>$ {{movie.Movies_cont.price}}</td>
+                </tr>
+                {% endfor %}
+  
+              </tbody>
+            </table>
+  
+            <p class="checkout_tag">Total: S {{total |intcomma}}</p>
+          </div>
+          <a href="{% url 'checkout' %}" class="btn btn-primary checkout_buttom">Continue Paying</a>
+        </ul>
+      </div>
+    </div>
+  </div>
+{% endblock %}

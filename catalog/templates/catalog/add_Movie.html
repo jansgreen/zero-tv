@@ -1,0 +1,42 @@
+{% extends "base_generic.html" %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="bg-light checkout_container">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 order-md-2 mb-4">
+                <h4 class="d-flex justify-content-between align-items-center mb-3">
+
+                </h4>
+
+            </div>
+            <div class="col-md-8 order-md-1 form_container">
+                <h4 class="mb-3">Add a new Movie</h4>
+                <small>For your POSTER and BACKDROP set URL image.</small>
+
+                <form method="POST" action="{% url 'add_Movies' %}">
+                {% csrf_token %} 
+                {{ form.original_title |as_crispy_field  }}
+                {{ form.title |as_crispy_field  }}
+                {{ form.genre_ids |as_crispy_field  }}
+                {{ form.adult |as_crispy_field  }}
+                {{ form.poster |as_crispy_field  }}
+                {{ form.backdrop |as_crispy_field  }}
+                {{ form.Language |as_crispy_field  }}
+                {{ form.overview |as_crispy_field  }}
+                {{ form.release_date |as_crispy_field  }}
+                {{ form.price |as_crispy_field  }}
+                <div class="text-right" >
+                    <a href="{% url 'index' %}" class="btn btn-outline-black btn-outline-black rounded-0">Cancel</a>
+                        <button class="btn btn-black rounded-0" >Save</button>
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

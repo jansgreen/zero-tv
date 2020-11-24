@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'profiles/css/profile.css' %}">
+{% endblock %}
+
+{% block page_header %}
+<div class="container header-container">
+  <div class="row">
+    <div class="col">
+
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="p-3 mb-2 bg-light text-dark block_container">
+  <h2 class="logo-font mb-4">Order History</h2>
+  <hr>
+  <div class="row">
+    <div class="col-sm p-3 mb-2 bg-dark text-white">
+      {% include "menu.html"%}
+    </div>
+    <div class="col-sm-10 p-3 mb-2 bg-light text-dark table-responsive">
+      <h4>History Orders</h4>
+      {% if orders %}
+      <table class="table table-sm table-borderless">
+        <thead>
+          <tr>
+            <th><h5 class="text-primary"> Order Number</h5></th>
+            <th><h5 class="text-primary">Date</h5></th>
+            <th><h5 class="text-primary">Items and Quantity</h5></th>
+            <th><h5 class="text-primary">Order Total</h5></th>
+          </tr>
+        </thead>
+        <tbody>
+
+          {% for order in orders %}
+          <tr>
+            <td>
+              <p>{{order}}</p>
+            </td>
+            <td>{{order.date}}</td>
+
+            <td>
+              <ul class="list-unstyled">
+                <li class="small">
+
+                  {% for item in order.lineitems.all %}
+                  <a href="{% url 'a_movie' item.Movie_id %}">{{ item.Movie_id }}</a> x {{ item.quantity }}
+                {% endfor %}
+
+                </li>
+              </ul>
+            </td>
+            <td>
+              ${{order.grand_total}}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block postloadjs %}
+{{block.super}}
+<script type="text/javascript" src="{% static 'profiles/js/countryfield.js' %}"></script>
+
+{% endblock %}

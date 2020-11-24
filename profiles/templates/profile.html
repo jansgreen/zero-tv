@@ -1,0 +1,43 @@
+{% extends "base_generic.html" %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'profiles/css/profile.css' %}">
+{% endblock %}
+
+
+{% block content %}
+<div class="p-3 mb-2 bg-light text-dark block_container">
+  <h2 class="logo-font mb-4">My Profile</h2>
+  <hr>
+  <div class="row">
+   <div class="col-sm p-3 mb-2 bg-dark text-white">
+      {% include "menu.html"%}
+    </div>
+    <div  class="col-sm-10 p-3 mb-2 bg-light text-dark">
+      <div class="container">
+        {% if order in orders %}
+        {{order}}
+        {% endif%}
+        <form class="needs-validation" action="{% url 'profiles' %}" method="POST" id="profile-update-form">
+          <p class="text-capitalize">Username: {{profile.user}} </p>
+          {% csrf_token %}
+          {{ form | crispy }}
+          <div class="invalid-feedback">
+            Valid fields is required.
+          </div>
+          <button type="submit" class="btn btn-primary">Update</button>
+
+        </form>
+      </div>
+    </div>
+
+    </div>
+  </div>
+
+  {% endblock %}
+
+  {% block postloadjs %}
+  {{block.super}}
+  <script type="text/javascript" src="{% static 'profiles/js/countryfield.js' %}"></script>
+
+  {% endblock %}

@@ -1,0 +1,135 @@
+[
+    {
+        "model": "catalog.Genders",
+        "pk": 28,
+        "fields": {
+            "name": "Action"
+        }
+    },
+    {
+        "model": "catalog.Genders",
+        "pk": 12,
+        "fields": {
+            "name": "Adventure"
+        }
+    },
+    {
+        "model": "catalog.Genders",
+        "pk": 16,
+        "fields": {
+            "name": "Animation"
+        }
+    },
+    {
+        "model": "catalog.Genders",
+        "pk": 35,
+        "fields": {
+            "name": "Comedy"
+        }
+    },
+    {
+        "model": "catalog.Genders",
+        "pk": 80,
+        "fields": {
+            "name": "Crime"
+        }
+    },
+    {
+        "model": "catalog.Genders",
+        "pk": 99,
+        "fields": {
+            "name": "Documentary"
+        }
+    },
+    {
+        "model": "catalog.Genders",
+        "pk": 18,
+        "fields": {
+            "name": "Drama"
+        }
+    },
+    {
+        "model": "catalog.Genders",
+        "pk": 10751,
+        "fields": {
+            "name": "Family"
+        }
+    },
+    {
+        "model": "catalog.Genders",
+        "pk": 14,
+        "fields": {
+            "name": "Fantasy"
+        }
+    },
+    {
+        "model": "catalog.Genders",
+        "pk": 36,
+        "fields": {
+            "name": "History"
+        }
+    },
+    {
+        "model": "catalog.Genders",
+        "pk": 27,
+        "fields": {
+            "name": "Horror"
+        }
+    },
+    {
+        "model": "catalog.Genders",
+        "pk": 10402,
+        "fields": {
+            "name": "Music"
+        }
+    },
+    {
+        "model": "catalog.Genders",
+        "pk": 9648,
+        "fields": {
+            "name": "Mystery"
+        }
+    },
+    {
+        "model": "catalog.Genders",
+        "pk": 10749,
+        "fields": {
+            "name": "Romance"
+        }
+    },
+    {
+        "model": "catalog.Genders",
+        "pk": 878,
+        "fields": {
+            "name": "Science Fiction"
+        }
+    },
+    {
+        "model": "catalog.Genders",
+        "pk": 10770,
+        "fields": {
+            "name": "TV Movie"
+        }
+    },
+    {
+        "model": "catalog.Genders",
+        "pk": 53,
+        "fields": {
+            "name": "Thriller"
+        }
+    },
+    {
+        "model": "catalog.Genders",
+        "pk": 10752,
+        "fields": {
+            "name": "War"
+        }
+    },
+    {
+        "model": "catalog.Genders",
+        "pk": 37,
+        "fields": {
+            "name": "Western"
+        }
+    }
+]

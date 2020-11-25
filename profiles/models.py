@@ -4,6 +4,7 @@ from django_countries.fields import CountryField
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
+
 #    This code come from Boutique ado, if you wanna see my db relational go to catalog models
 class UserProfile(models.Model):
     """

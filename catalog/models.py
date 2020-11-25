@@ -23,7 +23,7 @@ class Classification(models.Model):
         verbose_name_plural = 'classification'
 
     indicator = models.CharField(max_length=4)
-    minimum_age = models.CharField(max_length=25, null=True, blank=True)
+    minimum_age = models.CharField(max_length=254, null=True, blank=True)
     recommendation = models.CharField(max_length=254, null=True, blank=True)
     def __str__(self):
         return self.indicator       

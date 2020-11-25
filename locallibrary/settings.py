@@ -207,7 +207,7 @@ else:
 
 
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-    EMAIL_USER_TLS = True
+    EMAIL_USE_TLS = True
     EMAIL_PORT = 587
     EMAIL_HOST = 'smtp.googlemail.com'
     EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')

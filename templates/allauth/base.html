@@ -1,0 +1,20 @@
+{% extends "base_generic.html" %}
+{% block content %}
+<div class="p-3 mb-2 bg-light text-dark block_container">
+
+    <div class="row block_potition">
+      {% if user.autenticated %}
+      <h2 class="logo-font mb-4">My Profile</h2>
+      <hr>
+      {% endif %}
+      <div class="col-sm p-3 mb-2 bg-dark text-white">
+        {% include "menu.html"%}
+      </div>
+      <div class="col-sm-10 -3 mb-2 bg-light text-dark">
+        {% block inner_content %}
+        {% endblock %}
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

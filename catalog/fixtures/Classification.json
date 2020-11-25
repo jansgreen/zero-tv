@@ -1,0 +1,58 @@
+[
+    {
+        "model": "catalog.Classification",
+        "pk": 1,
+        "fields": {
+            "indicator": "G",
+            "minimum_age": "All ages",
+            "recommendation": "Suitable for all audiences."
+            
+
+        }
+    },
+    {
+        "model": "catalog.Classification",
+        "pk": 2,
+        "fields": {
+            "indicator": "PG",
+            "minimum_age": "+13 years, suggested company",
+            "recommendation": "Suitable for all audiences, but with parental guidance for children under 13 years old."
+            
+
+        }
+    },
+    {
+        "model": "catalog.Classification",
+        "pk": 3,
+        "fields": {
+            "indicator": "R-13",
+            "minimum_age": "+13 years",
+            "recommendation": "Restricted to minors under 13 years old."
+            
+
+        }
+    },
+    {
+        "model": "catalog.Classification",
+        "pk": 4,
+        "fields": {
+            "indicator": "R-16",
+            "minimum_age": "+16 years",
+            "recommendation": "Restricted to minors under 16 years old."
+            
+
+        }
+    },
+    {
+        "model": "catalog.Classification",
+        "pk": 5,
+        "fields": {
+            "indicator": "R-18",
+            "minimum_age": "+18 years",
+            "recommendation": "Restricted to minors under 18 years of age.."
+            
+
+        }
+    }
+
+]

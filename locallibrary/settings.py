@@ -78,7 +78,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['./templates/allauth', './bag/templates/bag', './checkout/templates/checkout', './profile/templates/profile'],
+        'DIRS': ['./templates/allauth', './bag/templates/bag', './checkout/templates/checkout', './profile/templates/'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

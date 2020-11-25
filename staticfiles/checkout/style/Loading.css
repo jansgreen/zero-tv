@@ -1,0 +1,25 @@
+/*=================LOANDING*/
+
+#loading-overlay{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #033b038a;
+    z-index: 9999;
+    
+  }
+  .loading{
+    margin-left: 50%;
+    
+    }
+    
+  .spinner-grow{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40%;
+  }
+

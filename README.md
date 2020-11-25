@@ -17,7 +17,11 @@ the main page the user will have the following characteristics without logging i
 * The main page has a search and filter area, the user will be able to search for the preferred movie, they will be able to search by genre, by year and by title.
 * 
 1. Open tab to `http://127.0.0.1:8000` to see the main site, with your new objects.
-
+## Apps of the project
+ * Catalog: this show all movies we have in database.
+ * Bag: this app allows: see details of a movie and get movie for proccess payment.
+ * checkout: all projecto of store need a checkout, this help proccess all payment with stripe.
+ * profiles: It is the typical user application that allows you to save information about the user and related to your order.  
 ## Site Map
 
 1. [Home](https://zero-tv.herokuapp.com/catalog/)
@@ -58,6 +62,7 @@ the main page the user will have the following characteristics without logging i
     - jQuery: came with Bootstrap to make the navbar responsive but was also used for the smooth scroll function in JavaScript.
     - Git: was used for version control by utilizing the Gitpod terminal to commit to Git and Push to GitHub.
     - GitHub: is used to store the projects code after being pushed from Git.
+    - Stripe: used with javascripts language, to proccess all payment of the zero-tv.
 
 5. Languages Used
     - HTML5

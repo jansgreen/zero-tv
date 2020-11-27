@@ -13,10 +13,10 @@ from django.contrib.auth.models import User
 
 @login_required
 def profiles(request):
-    
-    profile = UserProfile.objects.get_or_create(user=request.user.id)
+    profile = get_object_or_404(UserProfile, user=request.user)
+
     if request.method == 'POST':
-        form = UserProfileforms(request.POST, instance=profile)
+        form = UserProfileforms(request.POST, instance=user)
         if form.is_valid():
             form.save()
             messages.success(request, 'Profile update successfully')
@@ -37,8 +37,8 @@ def order_history(request):
     """
     Redirect the user to their user profile
     """
-    profile = UserProfile.objects.get_or_create(UserProfile,user=request.user.id)
-
+    profile = get_object_or_404(UserProfile, user=request.user)
+    
     orders = profile.orders.all()
 
     template = 'Order_History.html'

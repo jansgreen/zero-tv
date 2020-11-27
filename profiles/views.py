@@ -13,7 +13,7 @@ from django.contrib.auth.models import User
 
 @login_required
 def profiles(request):
-    profile = UserProfile.objects.get_or_create(user=request.user)
+    profile = get_object_or_404(UserProfile, user=request.user)
     if request.method == 'POST':
         form = UserProfileforms(request.POST, instance=user)
         if form.is_valid():

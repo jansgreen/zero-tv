@@ -14,7 +14,7 @@ from django.contrib.auth.models import User
 @login_required
 def profiles(request):
     profile = UserProfile.objects.get(user=request.user)
-    if profile:
+    if profile.DoesNotExist:
         if request.method == 'POST':
             form = UserProfileforms(request.POST, instance=user)
             if form.is_valid():

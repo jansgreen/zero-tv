@@ -22,11 +22,12 @@
                     <div class="card-body">
                         <h5 class="card-title" name=title>{{movie.title|upper}}</h5>
                         {% if movie.original_title != "['original_title']" %}
-                        <small class="text-muted">Original Title:</small> <p class="card-text">{{movie.original_title}}</p>
+                        <small class="text-muted">Original Title:</small>
+                        <p class="card-text">{{movie.original_title}}</p>
                         {% endif %}
                         <p class="card-text">Overview : {{movie.overview}}</p>
                         <p class="card-text">Language : {{movie.Language }}</p>
-                        <p class="card-text">Genres : 
+                        <p class="card-text">Genres :
                             {{ galeries.management_form }}
                             {% for genre in movie.genre_ids.all %} {{ genre }}{% if not forloop.last %}
                             {% endif %}
@@ -47,40 +48,49 @@
                         <p class="card-text"><small class="text-muted">Average:<i class="fa fa-star"
                                     aria-hidden="true">{{vote_average}}</i>
                             </small></p>
-                            <div class="container">
-                        <div class="row ">
-                            <div class="col-sm button_function">
-                                <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)"
-                                    name="quantity" value="1" min="1" max="99" data-movie.id="{{movie.id}}"
-                                    id="id_qty_{{movie.id}}" placeholder="Quantity">
+                        <div class="container">
+                            <div class="row ">
+                                <div class="col-sm button_function">
+                                    <input type="number" class="form-control"
+                                        aria-label="Amount (to the nearest dollar)" name="quantity" value="1" min="1"
+                                        max="99" data-movie.id="{{movie.id}}" id="id_qty_{{movie.id}}"
+                                        placeholder="Quantity">
+                                </div>
+                                <div class="col-sm button_function">
+                                    <input type="submit" class="btn btn-info" value="Buy ${{movie.price}}"></input>
+                                    <input type="hidden" name="redirect_url" value="{{ request.path}}"></input>
+                                </div>
+                                <div class="col-sm button_function">
+                                    <a class="btn btn-success" href="{% url 'bag' %}">Back to List</a>
+                                </div>
+                                <div class="col-sm button_functio">
+                                    {% if Movies_count %}
+
+                                    <a href="{% if user.is_authenticated %}{% url 'save_movies' %} {% else %}{% url 'account_login' %} {% endif %}"
+                                        class="btn btn-success">
+                                        Go to Pay
+                                    </a>                                        {% endif %}
+                                </div>
                             </div>
-                            <div class="col-sm button_function">
-                                <input type="submit" class="btn btn-info" value="Buy ${{movie.price}}"></input>
-                                <input type="hidden" name="redirect_url" value="{{ request.path}}"></input>
+                            <hr>
+                            <div class="row justify-content-end ">
+                                {% if  request.user.is_superuser %}
+                                <div class="col-sm-4  button_function">
+                                    <a class="btn btn-success" href="{% url 'edit_Movie' movie.id %}">Edit Movie</a>
+                                </div>
+                                <div class="col-sm-4 button_function">
+                                    <a class="btn btn-success" href="{% url 'delete_Movie' movie.id %}">Delete</a>
+                                </div>
+                                {% endif %}
                             </div>
-                            <div class="col-sm button_function">
-                                <a class="btn btn-success" href="{% url 'bag' %}">Back to List</a>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row justify-content-end ">
-                            {% if  request.user.is_superuser %}
-                            <div class="col-sm-4  button_function">
-                                <a class="btn btn-success" href="{% url 'edit_Movie' movie.id %}">Edit Movie</a>
-                            </div>
-                            <div class="col-sm-4 button_function">
-                                <a class="btn btn-success" href="{% url 'delete_Movie' movie.id %}">Delete</a>
-                            </div>
-                            {% endif %}
-                        </div>
 
                         </div>
 
+                    </div>
+                </form>
             </div>
-        </form>
         </div>
     </div>
-</div>
 </div>
 
 {% endfor %}

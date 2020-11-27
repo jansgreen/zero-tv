@@ -29,7 +29,11 @@ else:
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True #'DEVELOPMENT' in os.environ
+if 'DEVELOPMENT' in os.environ:
+    DEBUG = 'DEVELOPMENT' in os.environ
+else:
+    DEBUG = True
+
 
 # Set hosts to allow any app on Heroku and the local testing URL
 ALLOWED_HOSTS = ['.herokuapp.com','127.0.0.1']

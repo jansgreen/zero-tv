@@ -13,7 +13,8 @@ from django.contrib.auth.models import User
 
 @login_required
 def profiles(request):
-    profile = get_object_or_404(UserProfile,user=request.user.id)
+    
+    profile = UserProfile.objects.get_or_create(user=request.user.id)
     if request.method == 'POST':
         form = UserProfileforms(request.POST, instance=profile)
         if form.is_valid():
@@ -36,7 +37,7 @@ def order_history(request):
     """
     Redirect the user to their user profile
     """
-    profile = get_object_or_404(UserProfile,user=request.user.id)
+    profile = UserProfile.objects.get_or_create(UserProfile,user=request.user.id)
 
     orders = profile.orders.all()
 

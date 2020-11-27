@@ -18,14 +18,14 @@
                 <small>For your POSTER and BACKDROP set URL image.</small>
 
                 <form method="POST" action="{% url 'add_Movies' %}">
-                {% csrf_token %} 
+                {% csrf_token %}
                 {{ form.original_title |as_crispy_field  }}
                 {{ form.title |as_crispy_field  }}
                 {{ form.genre_ids |as_crispy_field  }}
-                {{ form.adult |as_crispy_field  }}
+                {{ form.sorting |as_crispy_field  }}
                 {{ form.poster |as_crispy_field  }}
                 {{ form.backdrop |as_crispy_field  }}
-                {{ form.Language |as_crispy_field  }}
+                {{ form.language |as_crispy_field  }}
                 {{ form.overview |as_crispy_field  }}
                 {{ form.release_date |as_crispy_field  }}
                 {{ form.price |as_crispy_field  }}

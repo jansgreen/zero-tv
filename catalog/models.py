@@ -10,8 +10,12 @@ class Genders(models.Model):
 
     class Meta:
         verbose_name_plural = 'Genders'
-
-    id = models.CharField(max_length=6, primary_key=True) # this column was specified with id because django sets the default id incrementing; the data from https://api.themoviedb.org in the Genders.json file comes with a specific and random ID, already registered in the movie information, for that reason it is the need to specify an ID, On the contrary, it is a tedious job to put the genres to each film, this database has 9380 films.
+    # this column was specified with id because django sets the default id incrementing; 
+    # the data from https://api.themoviedb.org in the Genders.json file comes with a specific and random ID, 
+    # already registered in the movie information, for that reason it is the need to specify an ID, On the contrary, 
+    # it is a tedious job to put the genres to each film, this database has 9380 films.
+    
+    id = models.CharField(max_length=6, primary_key=True) 
     name = models.CharField(max_length=254, null=True, blank=True)
 
     def __str__(self):

@@ -13,24 +13,43 @@ from django.contrib.auth.models import User
 
 @login_required
 def profiles(request):
-    profile = get_object_or_404(UserProfile, user=request.user)
-
-    if request.method == 'POST':
-        form = UserProfileforms(request.POST, instance=user)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Profile update successfully')
+    profile = UserProfile.objects.get(user=request.user)
+    if profile:
+        if request.method == 'POST':
+            form = UserProfileforms(request.POST, instance=user)
+            if form.is_valid():
+                form.save()
+                messages.success(request, 'Profile update successfully')
+            else:
+                messages.error (request, 'Update failed. Please ensure the form is valid.')
         else:
-            messages.error (request, 'Update failed. Please ensure the form is valid.')
-    else:
-        form = UserProfileforms(instance=profile)
-    template = 'profile.html'
-    context = {
-        'form':form,
-        'profile': profile,
+            form = UserProfileforms(instance=profile)
+        template = 'profile.html'
+        context = {
+            'form':form,
+            'profile': profile,
 
-    }
-    return render(request, template, context)
+        }
+        return render(request, template, context)
+    else:
+        profile = UserProfile.objects.create(user=request.user)
+        if request.method == 'POST':
+            form = UserProfileforms(request.POST, instance=user)
+            if form.is_valid():
+                form.save()
+                messages.success(request, 'Profile update successfully')
+            else:
+                messages.error (request, 'Update failed. Please ensure the form is valid.')
+        else:
+            form = UserProfileforms(instance=profile)
+        template = 'profile.html'
+        context = {
+            'form':form,
+            'profile': profile,
+
+        }
+        return render(request, template, context)
+
 
 @login_required
 def order_history(request):
@@ -38,7 +57,7 @@ def order_history(request):
     Redirect the user to their user profile
     """
     profile = get_object_or_404(UserProfile, user=request.user)
-    
+
     orders = profile.orders.all()
 
     template = 'Order_History.html'

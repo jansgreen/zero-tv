@@ -28,11 +28,7 @@ else:
     SECRET_KEY = config('DJANGO_SECRET_KEY')
 
 
-# SECURITY WARNING: don't run with debug turned on in production!
-if 'DEVELOPMENT' in os.environ:
-    DEBUG = os.environ.get('DEVELOPMENT', '')
-else:
-    DEBUG = True
+DEBUG = False
 
 
 # Set hosts to allow any app on Heroku and the local testing URL
@@ -209,13 +205,14 @@ else:
     API_KEY = config('API_KEY', '')
 
 if 'DEVELOPMENT' in os.environ:
-    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-    DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL')
-
-else:
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
     EMAIL_USE_TLS = True
     EMAIL_PORT = 587
     EMAIL_HOST = 'smtp.googlemail.com'
     EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
     EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASS')
+
+else:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+    DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL')
+

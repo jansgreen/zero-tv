@@ -30,7 +30,7 @@ else:
 
 # SECURITY WARNING: don't run with debug turned on in production!
 if 'DEVELOPMENT' in os.environ:
-    DEBUG = 'DEVELOPMENT' in os.environ
+    DEBUG = os.environ.get('DEVELOPMENT', '')
 else:
     DEBUG = True
 

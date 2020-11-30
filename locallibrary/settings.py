@@ -27,8 +27,10 @@ if 'DEVELOPMENT' in os.environ:
 else:
     SECRET_KEY = config('DJANGO_SECRET_KEY')
 
-
-DEBUG = False
+# I keep the DE false, as required by the code institute to supply the project, 
+# it could have been saved to heroku in a boolean variable as false, 
+# but I prefer to make sure it is visible.
+DEBUG = False 
 
 
 # Set hosts to allow any app on Heroku and the local testing URL

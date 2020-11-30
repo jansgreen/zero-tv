@@ -15,7 +15,7 @@ from django.contrib.auth.models import User
 def profiles(request):
     profile = get_object_or_404(UserProfile, user=request.user)
     if request.method == 'POST':
-        form = UserProfileforms(request.POST, instance=user)
+        form = UserProfileforms(request.POST, instance=profile)
         if form.is_valid():
             form.save()
             messages.success(request, 'Profile update successfully')

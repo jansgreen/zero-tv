@@ -21,11 +21,8 @@ def view_bag(request):
         }
     return render(request, 'bag/bag.html', context)
 
-
-
 def push_bag(request, id_movie):
     """A view show a user bag, all code come from code intitute, but they have some slight changes"""
-
 
     quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect_url')
@@ -35,9 +32,7 @@ def push_bag(request, id_movie):
         bag[id_movie] += quantity
     else:
         bag[id_movie] = quantity
-    
     request.session['bag'] = bag
-    print(bag)
     return redirect(redirect_url)
 
 def id_movie(request, id_movie):

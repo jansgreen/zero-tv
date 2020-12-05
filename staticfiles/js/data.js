@@ -1,3 +1,5 @@
+/*for this code I fallwo the intruction in bootstrap*/
+
 $('.carousel').carousel({
   interval: 2000
 })

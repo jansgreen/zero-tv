@@ -10,6 +10,8 @@ import json
 import time
 
 
+# I Fallow the totorial Boutique Ado
+
 class StripeWH_Handler:
     """
     docstring
@@ -65,7 +67,6 @@ class StripeWH_Handler:
 
         profile = None
         username = intent.metadata.username
-        print(hipping_details)
         if username != 'AnonymousUser':
             profile = UserProfile.objects.get(user__username=username)
             if save_info:

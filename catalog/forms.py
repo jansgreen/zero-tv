@@ -10,6 +10,8 @@ class ProductForm(forms.ModelForm):
         fields = '__all__'
 
     def __init__(self, *args, **kwargs):
+
+        
         super().__init__(*args, **kwargs)
         Gender = Genders.objects.all()
         name = [(c.id, c.name) for c in Gender ]
